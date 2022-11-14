@@ -6,6 +6,7 @@ import 'package:shop_app/view/screens/auth/signup_screen.dart';
 import 'package:shop_app/view/screens/welcome_screen.dart';
 
 import '../logic/binding/auth_biniding.dart';
+import '../logic/binding/product_binding.dart';
 import '../view/screens/main_screen.dart';
 
 class AppRoutes{
@@ -41,7 +42,8 @@ static final routes =[
   GetPage(
       name: Routes.mainScreen ,
       page: () => MainScreen(),
-      bindings: [AuthBinding(),MainBindng()],
+      bindings: [AuthBinding(),MainBindng(),
+        ProductBinding()],
 
   ),
 

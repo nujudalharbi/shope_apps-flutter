@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:shop_app/theme.dart';
 import 'package:shop_app/view/widgets/text_utils.dart';
 
+import '../widgets/home/card_item.dart';
 import '../widgets/home/search_text_form.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -50,7 +51,21 @@ bottomLeft: Radius.circular(20),
                   ),
                 ),
               ),
-
+const SizedBox(height: 10,),
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: TextUtils(
+                      text: "Categories",
+                      fointSize: 20,
+                      fontWeight: FontWeight.w500,
+                      color:Get.isDarkMode ? Colors.white :Colors.black ,
+                      underLine: TextDecoration.none),
+                ),
+              ),
+             const SizedBox(height: 30,),
+              CardItems(),
             ],
 
 
