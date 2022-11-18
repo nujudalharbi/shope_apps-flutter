@@ -6,6 +6,7 @@ import 'package:shop_app/view/screens/auth/forgot_password.dart';
 import '../../../routes/routes.dart';
 import '../../../theme.dart';
 import '../../../utiils/my_string.dart';
+import '../../../utiils/theme.dart';
 import '../../widgets/auth/auth_button.dart';
 import '../../widgets/auth/auth_text_from_field.dart';
 import '../../widgets/auth/check_widget.dart';

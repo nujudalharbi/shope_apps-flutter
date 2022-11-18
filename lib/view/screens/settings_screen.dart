@@ -4,6 +4,8 @@ import 'package:shop_app/logic/controllers/auth_controller.dart';
 import 'package:shop_app/logic/controllers/theme_controller.dart';
 import 'package:shop_app/theme.dart';
 
+import '../../utiils/theme.dart';
+
 class Settingcreen extends StatelessWidget {
   const Settingcreen({Key? key}) : super(key: key);
 
@@ -18,9 +20,9 @@ class Settingcreen extends StatelessWidget {
             children: [
               TextButton(
         onPressed: () {
-              // Get.isDarkMode ?
-              // Get.changeThemeMode(ThemeMode.light) :
-              // Get.changeThemeMode(ThemeMode.dark);
+              Get.isDarkMode ?
+              Get.changeThemeMode(ThemeMode.light) :
+              Get.changeThemeMode(ThemeMode.dark);
               ThemeControler().changesTheme();
         },
         child: Text(

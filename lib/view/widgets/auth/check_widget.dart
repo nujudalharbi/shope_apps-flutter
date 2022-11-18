@@ -4,6 +4,7 @@ import 'package:shop_app/logic/controllers/auth_controller.dart';
 import 'package:shop_app/view/widgets/text_utils.dart';
 
 import '../../../theme.dart';
+import '../../../utiils/theme.dart';
 
 class CheckWidget extends StatelessWidget {
   CheckWidget({Key? key}) : super(key: key);

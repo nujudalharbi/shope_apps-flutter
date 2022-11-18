@@ -8,6 +8,8 @@ import 'package:shop_app/routes/routes.dart';
 import 'package:shop_app/theme.dart';
 import 'package:shop_app/view/screens/welcome_screen.dart';
 
+import 'utiils/theme.dart';
+
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();

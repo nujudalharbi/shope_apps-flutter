@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:shop_app/theme.dart';
 import 'package:shop_app/view/widgets/text_utils.dart';
 
+import '../../../utiils/theme.dart';
+
 class ContainerUnder extends StatelessWidget {
   final String text;
   final String textType ;

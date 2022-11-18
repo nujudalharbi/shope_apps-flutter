@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shop_app/logic/controllers/cart_controoler.dart';
 // import 'package:get/get.dart';
 import 'package:shop_app/logic/controllers/product_controller.dart';
+import 'package:shop_app/models/product_model.dart';
 import 'package:shop_app/theme.dart';
 import 'package:shop_app/view/widgets/text_utils.dart';
+
+import '../../../utiils/theme.dart';
 class CardItems extends StatelessWidget {
    CardItems({Key? key}) : super(key: key);
   final controller = Get.find<ProductController>();
 
+  final cartController = Get.find<CartController>();
   @override
   Widget build(BuildContext context) {
     //OBX تستخدم مع المعلومات الكبيره والستريم
@@ -35,6 +40,8 @@ class CardItems extends StatelessWidget {
                   image: controller.productList[index].image,
                   price: controller.productList[index].price,
                   rate:  controller.productList[index].rating.rate,
+                  productId: controller.productList[index].id,
+                  productModel: controller.productList[index],
                 );
               }),
         );
@@ -49,6 +56,8 @@ Widget buildCardItems({
   required String image,
   required double price,
   required double rate,
+  required int productId,
+  required ProductModel productModel,
 
 }){
     return Padding(padding: const EdgeInsets.all(5),
@@ -67,21 +76,32 @@ decoration: BoxDecoration(
 ),
         child:Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-             children: [
-               IconButton(
-                   onPressed: (){},
-                   icon: const Icon(Icons.favorite_outline
-                   , color: Colors.black,),
-               ),
-               IconButton(
-                 onPressed: (){},
-                 icon: const Icon(Icons.add
-                   , color: Colors.black,),
-               ),
-             ],
-            ),
+          Obx(() =>   Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconButton(
+                onPressed: (){
+controller.mangeFavourrites(productId);
+
+                },
+                icon: controller.isFavourites(productId) ?
+
+      Icon(Icons.favorite
+                  , color: Colors.red,) :
+                Icon(Icons.favorite_outline
+                  , color: Colors.black,),
+              ),
+              IconButton(
+                onPressed: (){
+                  cartController.addProductTotalCart(productModel);
+
+                },
+                icon: const Icon(Icons.shopping_cart
+                  , color: Colors.black,),
+              ),
+            ],
+          ),
+          ),
             Container(
               width: double.infinity,
               height: 140,

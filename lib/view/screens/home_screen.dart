@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:shop_app/theme.dart';
 import 'package:shop_app/view/widgets/text_utils.dart';
 
+import '../../utiils/theme.dart';
 import '../widgets/home/card_item.dart';
 import '../widgets/home/search_text_form.dart';
 

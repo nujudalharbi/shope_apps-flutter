@@ -5,6 +5,7 @@ import 'package:shop_app/theme.dart';
 import 'package:shop_app/view/widgets/auth/auth_button.dart';
 
 import '../../../utiils/my_string.dart';
+import '../../../utiils/theme.dart';
 import '../../widgets/auth/auth_text_from_field.dart';
 
 

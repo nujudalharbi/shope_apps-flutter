@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../routes/routes.dart';
 import '../../theme.dart';
+import '../../utiils/theme.dart';
 import '../widgets/text_utils.dart';
 import 'auth/login_screen.dart';
 

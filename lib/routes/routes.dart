@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
 import 'package:shop_app/logic/binding/main_binding.dart';
+import 'package:shop_app/logic/controllers/product_controller.dart';
 import 'package:shop_app/view/screens/auth/forgot_password.dart';
 import 'package:shop_app/view/screens/auth/login_screen.dart';
 import 'package:shop_app/view/screens/auth/signup_screen.dart';
+import 'package:shop_app/view/screens/cart_screen.dart';
 import 'package:shop_app/view/screens/welcome_screen.dart';
 
 import '../logic/binding/auth_biniding.dart';
@@ -33,6 +35,20 @@ static final routes =[
     page: () => SignUpScreen(),
     binding: AuthBinding()
   ),
+
+
+
+
+  GetPage(
+      name: Routes.cartScreen ,
+      page: () => CartScreen(),
+      bindings:[
+        AuthBinding(),
+        ProductBinding(),
+      ],
+
+
+  ),
   GetPage(
       name: Routes.forgetPasswordScreen ,
       page: () => ForgetPasswordScreen(),
@@ -60,4 +76,5 @@ class Routes{
   static const signupScreen = '/SignUpScreen';
   static const forgetPasswordScreen = '/forgetPasswordScreen';
   static const mainScreen = '/MainScreen';
+  static const cartScreen = '/CartScreen';
 }
