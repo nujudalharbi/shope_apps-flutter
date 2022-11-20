@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'package:shop_app/utiils/my_string.dart';
 
-import 'models/product_model.dart';
+import '../models/product_model.dart';
 //معنى as http استخدمها بشكل مختصر
 class ProductServices{
   
@@ -21,3 +21,5 @@ class ProductServices{
   }
 
 }
+
+

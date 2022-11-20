@@ -11,13 +11,21 @@ import '../../routes/routes.dart';
 class AuthController extends GetxController {
   bool isVisiblity = false;
   bool isCheckBox = false;
-  var displayUserName = '';
+  var displayUserName = ''.obs;
   var displayUserPhoto = '';
   var googleSignIn = GoogleSignIn();
   FaceBookModel? faceBookModel;
   var isSingIn = false ;
   final GetStorage authBox = GetStorage();
   FirebaseAuth auth = FirebaseAuth.instance;
+
+  @override
+  void onInit() {
+  googleSingUpApp();
+    super.onInit();
+  }
+
+
   void Visiblity() {
     isVisiblity = !isVisiblity;
     update();
@@ -41,7 +49,7 @@ class AuthController extends GetxController {
         password: password,
       )
           .then((value) {
-        displayUserName = name;
+        displayUserName.value = name;
         auth.currentUser!.updateDisplayName(name);
       });
 
@@ -85,7 +93,7 @@ class AuthController extends GetxController {
     try {
       await auth
           .signInWithEmailAndPassword(email: email, password: password)
-          .then((value) => displayUserName = auth.currentUser!.displayName!);
+          .then((value) => displayUserName.value = auth.currentUser!.displayName!);
       isSingIn = true;
 authBox.write("auth", isSingIn);
 
@@ -124,7 +132,7 @@ authBox.write("auth", isSingIn);
   void googleSingUpApp() async {
     try {
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
-      displayUserName = googleUser!.displayName!;
+      displayUserName.value = googleUser!.displayName!;
       displayUserPhoto = googleUser.photoUrl!;
       isSingIn = true;
       authBox.write("auth", isSingIn);
@@ -196,7 +204,7 @@ print(faceBookModel!.email);
  await auth.signOut();
  await googleSignIn.signOut();
  // await FacebookAuth.i.logOut();
- displayUserName = "";
+ displayUserName.value = "";
  displayUserPhoto = "";
  isSingIn = false;
  authBox.remove('auth');
