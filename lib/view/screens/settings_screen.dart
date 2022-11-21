@@ -7,6 +7,7 @@ import 'package:shop_app/view/widgets/text_utils.dart';
 
 import '../../utiils/theme.dart';
 import '../widgets/settings/dark_mode_widget.dart';
+import '../widgets/settings/language_widget.dart';
 import '../widgets/settings/logout_widget.dart';
 import '../widgets/settings/profile_widget.dart';
 
@@ -30,7 +31,7 @@ body: ListView(
       height: 20,
     ),
     TextUtils(
-        text: "GENERAL",
+        text: "GENERAL".tr,
         fointSize: 18,
         fontWeight: FontWeight.bold,
         color: Get.isDarkMode ? pinkClr : mainColor,
@@ -49,7 +50,7 @@ body: ListView(
       height: 20,
     ),
 
-    // LanguageWidget(),
+ LanguageWidget(),
 
     const SizedBox(
       height: 20,

@@ -12,17 +12,26 @@ class AuthController extends GetxController {
   bool isVisiblity = false;
   bool isCheckBox = false;
   var displayUserName = ''.obs;
-  var displayUserPhoto = '';
+  var displayUserEmail = ''.obs;
+  var displayUserPhoto = ''.obs;
   var googleSignIn = GoogleSignIn();
   FaceBookModel? faceBookModel;
   var isSingIn = false ;
   final GetStorage authBox = GetStorage();
   FirebaseAuth auth = FirebaseAuth.instance;
-
+  User?get userProfile => auth.currentUser;
   @override
   void onInit() {
-  googleSingUpApp();
+  //  ---*
+
+
+  //---*
+  displayUserName.value = (userProfile != null ?  userProfile!.displayName : "" )!;
+
+
+  displayUserEmail.value = (userProfile != null ?  userProfile!.email : "" )!;
     super.onInit();
+
   }
 
 
@@ -45,11 +54,15 @@ class AuthController extends GetxController {
     try {
       await auth
           .createUserWithEmailAndPassword(
+
         email: email,
         password: password,
+
+
       )
           .then((value) {
         displayUserName.value = name;
+        displayUserEmail.value = email;
         auth.currentUser!.updateDisplayName(name);
       });
 
@@ -133,7 +146,24 @@ authBox.write("auth", isSingIn);
     try {
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
       displayUserName.value = googleUser!.displayName!;
-      displayUserPhoto = googleUser.photoUrl!;
+
+
+      //------************
+      displayUserPhoto = googleUser.photoUrl! as RxString;
+      displayUserEmail.value = googleUser.email;
+
+
+      GoogleSignInAuthentication googleSignInAuthentication =
+      await googleUser.authentication;
+
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        idToken: googleSignInAuthentication.idToken,
+        accessToken: googleSignInAuthentication.accessToken,
+      );
+
+      await auth.signInWithCredential(credential);
+
+      //----------****************
       isSingIn = true;
       authBox.write("auth", isSingIn);
       update();
@@ -205,7 +235,7 @@ print(faceBookModel!.email);
  await googleSignIn.signOut();
  // await FacebookAuth.i.logOut();
  displayUserName.value = "";
- displayUserPhoto = "";
+ //displayUserPhoto = "";
  isSingIn = false;
  authBox.remove('auth');
  update();

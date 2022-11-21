@@ -20,11 +20,13 @@ class ProfileImage extends StatelessWidget {
                 Container(
                   height: 100,
                   width: 100,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Colors.white,
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        image: NetworkImage("https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1600&q=60"),
+                        image:authController.displayUserPhoto.value.isNotEmpty
+                            ? NetworkImage(authController.displayUserPhoto.value)
+                            : NetworkImage("https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1600&q=60"),
                         fit: BoxFit.cover
                     ),
                   ),
@@ -42,7 +44,7 @@ class ProfileImage extends StatelessWidget {
                     ),
 
                     TextUtils(
-                        text: "d@gmail.com",
+                        text: authController.displayUserEmail.value,
                         fointSize: 14,
                         fontWeight: FontWeight.bold,
                         color: Get.isDarkMode ? Colors.white : Colors.black,

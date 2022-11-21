@@ -8,6 +8,8 @@ import 'package:shop_app/routes/routes.dart';
 import 'package:shop_app/theme.dart';
 import 'package:shop_app/view/screens/welcome_screen.dart';
 
+import 'languge/loclizition.dart';
+import 'utiils/my_string.dart';
 import 'utiils/theme.dart';
 
 void main() async {
@@ -29,6 +31,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'shope',
       debugShowCheckedModeBanner: false,
+    locale: Locale(GetStorage().read<String>("lang").toString()),
+    translations: LocaliztionApp(),
+    fallbackLocale: Locale(ene),
+
     theme: ThemesApp.light,
     darkTheme: ThemesApp.dark,
   themeMode: ThemeControler().themeDataGet,
